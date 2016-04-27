@@ -1,442 +1,101 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" ng-app="app">
 
 <head>
     <title>Planning Tool for business model</title>
     <meta charset="iso-8859-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="public/css/site.css" type="text/css">
+    <link href="public/css/bootstrap.min.css" rel="stylesheet">
+    <script src="public/js/jquery-1.10.2.min.js"></script>
     <script src="public/js/angular.min.js"></script>
+    <script src="public/js/angular-route.min.js"></script>
+    <script src="public/js/bootstrap.min.js"></script>
 </head>
 
-<body ng-app="project">
+<body id="page-top" class="index">
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#home">Assignment 2</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#home">Home</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#about">About</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+    </nav>
 
     <header>
         <div class="container">
-            <hgroup>
-                <h1><a href="#">Planning Tool Prototype</a></h1>
-                <h5>A sample computer aided planning tool</h5>
-            </hgroup>
-            <form action="#" method="post">
-                <fieldset>
-                    <legend>Search:</legend>
-                    <input type="text" placeholder="Search...">
-                    <button disabled class="btn icon i-search i-medium nohover"></button>
-                </fieldset>
-            </form>
-            <nav>
-                <ul id="menu" class="menu">
-                    <li class="active">
-                        <a class="icon i-home i-medium" href="index.html" title="Home">Home</a>
-                    </li>
-                    <li>
-                        <a class="icon i-info i-medium" href="about.html" title="About">About</a>
-                    </li>
-                </ul>
-            </nav>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-text">
+                        <span class="name">Planning Tool for Business</span>
+                        <hr class="star-light">
+                        <span class="skills">ISEM 551-50 Late Spring Assignment - 2</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
 
-    <main>
-            <div id="container" class="container home clear" ng-controller="stepController">
-            <div class="padding"  id="initial" ng-show="step === 0">
-                <h3 class="center">Enterprise Planning Tool</h3>
-                <div class="padding">
-                    This tool is mainly focused on the small scale business industries and also some of the government minor/small projects. Our main advisor/planner should help understand our users to get good knowledge of what they are getting into.
-                    <div class="fl_left" style="width: 300px; margin-top: 20px;">
-                        It will give them the information about the business they are interested in and along with the concepts such as learning, management, planning and Implementation.
+
+    <main ng-view>
+
+    </main>
+
+    <footer class="text-center">
+        <div class="footer-above">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col col-md-4" style="width: 400px;">
+                        <h3>Location</h3>
+                        <p>Harrisburg University
+                            <br>Harrisburg, PA</p>
+                    </div>
+
+                    <div class="footer-col col-md-4" style="width: 400px;">
+                        <h3>Assignment 2</h3>
+                        <p>Aparanjit</p>
                     </div>
                 </div>
-                
-                <div class="table fl_right">
-                    <div class="row">
-                        <div class="cell">Moduler Type</div>
-                        <div class="cell">
-                            <select ng-model="project.type">
-                                <option>Enterprise Moduler</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="cell">Project name</div>
-                        <div class="cell">
-                            <input type="text" ng-model="project.name"/>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="cell error">{{error}}</div>
-                        <div class="cell"><button ng-click="start()">Start</button></div>
-                    </div>
-                </div>     
-               
             </div>
-            <div id="steps"  ng-show="step > 0 && step < 5">
-                <h4 class="center">Enterprise Moduler</h4>
-                <section class="steps-container center">
-                    <h2>Step {{step}}</h2>
-                </section>
-                <section   id="step1" ng-show="step === 1">                  
-                    <div style="margin: 20px;">
-                        CAP is the utilization of Computer innovation to help in the process arranging of a section or item in assembling/manufacturing.
-                    </div>
-                    <div class="table border">
-                        <div class="row">
-                            <div class="cell">Enterprise Type</div>
-                            <div class="cell">
-                                <select ng-model="project.process.businessType">
-                                    <option>Education</option>
-                                    <option>Online Business</option>
-                                    <option>Medical</option>
-                                    <option>Information Systems</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="cell">Total branches</div>
-                            <div class="cell">
-                                <select ng-model="project.process.branches">
-                                    <option>1 to 5</option>
-                                    <option>5 to 10</option>
-                                    <option>10 to 50</option>
-                                    <option>above 50</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="cell">Total employees</div>
-                            <div class="cell">
-                                <select ng-model="project.process.employees">
-                                    <option>1 to 10</option>
-                                    <option>10 to 50</option>
-                                    <option>50 to 100</option>
-                                    <option>more than 100</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="cell">Web Services</div>
-                            <div class="cell">
-                                <label><input type="radio" value="Yes" name="onlineServices" ng-model="project.process.onlineServices"> Yes</label>
-                                <label><input type="radio" value="No" class="margin-left-small"  name="onlineServices" ng-model="project.process.onlineServices"> No</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="cell">On-demand Services</div>
-                            <div class="cell">
-                                <label><input type="radio" value="Few" name="onDemandServices" ng-model="project.process.onDemandServices"> Few</label>
-                                <label><input type="radio" value="Many" class="margin-left-small" name="onDemandServices" ng-model="project.process.onDemandServices"> Many</label>
-                                <label><input type="radio" value="None" class="margin-left-small"  name="onDemandServices" ng-model="project.process.onDemandServices"> None</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="cell">Select a Template</div>
-                            <div class="cell">
-                                <div><label><input type="radio" value="New Model for New Business" name="scenario" ng-model="project.process.scenario"> New Model for New Business</label></div>
-                                <div><label><input type="radio" value="New Model for Existing Business" name="scenario" ng-model="project.process.scenario"> New Model for Existing Business</label></div>
-                                <div><label><input type="radio" value="Existing Model for New Business" name="scenario" ng-model="project.process.scenario"> Existing Model for New Business</label></div>
-                                <div><label><input type="radio" value="Existing Model for Existing Business" name="scenario" ng-model="project.process.scenario"> Existing Model for Existing Business</label></div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section   id="step2" ng-show="step === 2">
-                    <h3 class="center">Enterprise Business Functions</h3>
-                    <div style="margin: 20px;">
-                        A success project should have a good idea at first, and it must have a very detailed plan to implement it as well. The team to create and test, the target or timeline of targets or steps need to achieve, the potential  customer and business partner can be used in the project are also the tasks which should be done by CEO  or VP.
-                  
-                    </div>
-                    <div style="margin: 20px;">
-                        This tool will collect the inputs from the users to look into what exactly the customers are looking into. It will mainly concentrate on four phases to accomplish the required outputs for the users. The four different phases are as follows
-                    </div>
-                    <div class="center">
-                        <img src="public/img/img1.jpg" />
-                    </div>
-                    
-                </section>
-                <section   id="step3" ng-show="step === 3">
-                    <h3 class="center">Enterprise Management</h3>
-                    <div style="margin: 20px;">
-                        It is a creation/manufacturing association activity that changes an item outline into an arrangement of direction (sequence, machine instrument setup and so forth.) to manufacture machined part monetarily and intensely
-
-                    </div>
-                    <div class="table">
-                        <div class="row">
-                            <div class="cell">Business Management</div>
-                            <div class="cell">
-                                <select ng-model="project.management.corporate.type">
-                                    <option>In House</option>
-                                    <option>Outsource</option>
-                                    <option>None</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="cell">Marketing</div>
-                            <div class="cell">
-                                <select ng-model="project.management.financeAccounting.type">
-                                    <option>In House</option>
-                                    <option>Outsource</option>
-                                    <option>None</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="cell">Sales</div>
-                            <div class="cell">
-                                <select ng-model="project.management.marketingSales.type">
-                                    <option>In House</option>
-                                    <option>Outsource</option>
-                                    <option>None</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="cell">Accounting</div>
-                            <div class="cell">
-                                <select ng-model="project.management.humanResource.type">
-                                    <option>In House</option>
-                                    <option>Outsource</option>
-                                    <option>None</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="cell">IT Services</div>
-                            <div class="cell">
-                                <select ng-model="project.management.itServices.type">
-                                    <option>In House</option>
-                                    <option>Outsource</option>
-                                    <option>None</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="cell">Human Resource</div>
-                            <div class="cell">
-                                <select ng-model="project.management.warehouseDistribution.type">
-                                    <option>In House</option>
-                                    <option>Outsource</option>
-                                    <option>None</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="cell">Customer Support</div>
-                            <div class="cell">
-                                <select ng-model="project.management.customerSupport.type">
-                                    <option>In House</option>
-                                    <option>Outsource</option>
-                                    <option>None</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section  id="step4"  ng-show="step === 4">
-                    <h3 class="center">Enterprise Resource Assignment</h3>
-                    <div style="margin: 20px;">
-                        Small companies and government initiatives has evolved into successful economic development, but most of the companies could not maintain their success and seen a downfall abruptly
-                    </div>
-                    <div class="table border">
-                        <div class="row">
-                            <div class="cell"><h4 class="center">Business Functions</h4></div>
-                            <div class="cell">
-                                <h4 class="center">
-                                    Number of Employees<br />
-                                    <span class="numbers">Managers</span><span class="numbers">Operators</span><span class="numbers">Workers</span>
-                                </h4>    
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="cell">Business Management</div>
-                            <div class="cell">
-                                <input type="number" ng-model="project.management.corporate.directors">
-                                <input type="number" ng-model="project.management.corporate.managers">
-                                <input type="number" ng-model="project.management.corporate.workers">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="cell">Marketing</div>
-                            <div class="cell">
-                                <input type="number" ng-model="project.management.financeAccounting.directors">
-                                <input type="number" ng-model="project.management.financeAccounting.managers">
-                                <input type="number" ng-model="project.management.financeAccounting.workers">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="cell">Sales</div>
-                            <div class="cell">
-                                <input type="number" ng-model="project.management.marketingSales.directors">
-                                <input type="number" ng-model="project.management.marketingSales.managers">
-                                <input type="number" ng-model="project.management.marketingSales.workers">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="cell">Accounting</div>
-                            <div class="cell">
-                                <input type="number" ng-model="project.management.humanResource.directors">
-                                <input type="number" ng-model="project.management.humanResource.managers">
-                                <input type="number" ng-model="project.management.humanResource.workers">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="cell">IT Services</div>
-                            <div class="cell">
-                                <input type="number" ng-model="project.management.itServices.directors">
-                                <input type="number" ng-model="project.management.itServices.managers">
-                                <input type="number" ng-model="project.management.itServices.workers">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="cell">Human Resource</div>
-                            <div class="cell">
-                                <input type="number" ng-model="project.management.warehouseDistribution.directors">
-                                <input type="number" ng-model="project.management.warehouseDistribution.managers">
-                                <input type="number" ng-model="project.management.warehouseDistribution.workers">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="cell">Customer Support</div>
-                            <div class="cell">
-                                <input type="number" ng-model="project.management.customerSupport.directors">
-                                <input type="number" ng-model="project.management.customerSupport.managers">
-                                <input type="number" ng-model="project.management.customerSupport.workers">
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <div class="center">
-                    <div class="error">{{error}}</div>
-                    <div class="padding-small">
-                        <button ng-click="back()" ng-disabled="step === 1">Back</button>
-                        <button class="margin-left-xlarge" ng-click="continue()">{{step === 4 ? "Finish" : "Next Step"}}</button>
-                    </div>
-                </div> 
-
-            </div>
-            <div class="padding"  id="final" ng-show="step === 5">
-                <h3 class="center">Enterprise Model Report</h3>
-                <div>
-                    <h4 class="center"  style="margin-bottom: 10px;">Project Details</h4>
-                <div class="table border" style="margin-bottom: 20px;">
-                    <div class="row">
-                        <div class="cell">Project Name:</div>
-                        <div class="cell semi-bold">{{project.name}}</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell">Project Type:</div>
-                        <div class="cell semi-bold">{{project.type}}</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell">Enterprise Type:</div>
-                        <div class="cell semi-bold">{{project.process.businessType}}</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell">Total Employees:</div>
-                        <div class="cell semi-bold">{{project.process.employees}}</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell">Web Services:</div>
-                        <div class="cell semi-bold">{{project.process.onlineServices}}</div>
+        </div>
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        Copyright &copy; Your Website 2016
                     </div>
                 </div>
+            </div>
+        </div>
+    </footer>
 
-                <div class="table border">
-                    <div class="row">
-                        <div class="cell bottom ">
-                            <h4 class="center">Locations</h4>
-                        </div>
-                        <div class="cell bottom">
-                            <h4 class="center">Business Functions</h4></div>
-                        <div class="cell bottom">
-                            <h4 class="center">Number of Employees<br />
-                                    <span class="numbers">Managers</span><span class="numbers">Operators</span><span class="numbers">Workers</span>
-                                </h4>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="cell center ">{{project.management.corporate.type}}</div>
-                        <div class="cell">Business Management</div>
-                        <div class="cell">
-                            <span class="numbers">{{project.management.corporate.directors}}</span>
-                            <span class="numbers">{{project.management.corporate.managers}}</span>
-                            <span class="numbers">{{project.management.corporate.workers}}</span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="cell center ">{{project.management.financeAccounting.type}}</div>
-                        <div class="cell">Marketing</div>
-                        <div class="cell">
-                            <span class="numbers">{{project.management.financeAccounting.directors}}</span>
-                            <span class="numbers">{{project.management.financeAccounting.managers}}</span>
-                            <span class="numbers">{{project.management.financeAccounting.workers}}</span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="cell center ">{{project.management.marketingSales.type}}</div>
-                        <div class="cell">Sales</div>
-                        <div class="cell">
-                            <span class="numbers">{{project.management.marketingSales.directors}}</span>
-                            <span class="numbers">{{project.management.marketingSales.managers}}</span>
-                            <span class="numbers">{{project.management.marketingSales.workers}}</span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="cell center ">{{project.management.humanResource.type}}</div>
-                        <div class="cell">Accounting</div>
-                        <div class="cell">
-                            <span class="numbers">{{project.management.humanResource.directors}}</span>
-                            <span class="numbers">{{project.management.humanResource.managers}}</span>
-                            <span class="numbers">{{project.management.humanResource.workers}}</span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="cell center ">{{project.management.itServices.type}}</div>
-                        <div class="cell">IT Services</div>
-                        <div class="cell">
-                            <span class="numbers">{{project.management.itServices.directors}}</span>
-                            <span class="numbers">{{project.management.itServices.managers}}</span>
-                            <span class="numbers">{{project.management.itServices.workers}}</span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="cell center ">{{project.management.warehouseDistribution.type}}</div>
-                        <div class="cell">Human Resource</div>
-                        <div class="cell">
-                            <span class="numbers">{{project.management.warehouseDistribution.directors}}</span>
-                            <span class="numbers">{{project.management.warehouseDistribution.managers}}</span>
-                            <span class="numbers">{{project.management.warehouseDistribution.workers}}</span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="cell center ">{{project.management.customerSupport.type}}</div>
-                        <div class="cell">Customer Support</div>
-                        <div class="cell">
-                            <span class="numbers">{{project.management.customerSupport.directors}}</span>
-                            <span class="numbers">{{project.management.customerSupport.managers}}</span>
-                            <span class="numbers">{{project.management.customerSupport.workers}}</span>
-                        </div>
-                    </div>
-                </div>
-        </div>
-        <div class="center">
-            <div class="padding-small">
-                <button ng-click="newProject()" >Home</button>
-            </div>
-        </div>
-        </div>
-        </div>
-        </main>
-        <footer>
-            <div class="container clear">
-                <p class="fl_left">Copyright &copy; 2016 - All Rights Reserved</p>
-                <p class="fl_right" style="text-align: right;">
-                </p>
-            </div>
-        </footer>
-        <script>
-            (function () { angular.module("project", []).controller("stepController", function ($scope) { var emptyProject = { type: "", name: "", date: "", process: {}, management: { corporate: {}, financeAccounting: {}, marketingSales: {}, humanResource: {}, itServices: {}, warehouseDistribution: {}, customerSupport: {} } }; $scope.project = angular.copy(emptyProject); $scope.preProjects = JSON.parse(localStorage.getItem("projects") || "[]"); $scope.step = 0; $scope.completedSteps = [1]; $scope.start = function () { if ($scope.project.type && $scope.project.name) { $scope.error = ""; $scope.step = 1; $scope.isSaved = false; } else $scope.error = "Enter required fields!" }; $scope.continue = function () { $scope.completedSteps.push($scope.step += 1); if ($scope.step > 4) $scope.finalReport = angular.toJson($scope.project, true); }; $scope.back = function () { if ($scope.step > 1) $scope.step -= 1; }; $scope.newProject = function () { $scope.project = angular.copy(emptyProject); $scope.step = 0; $scope.completedSteps = [1]; }; }); })();
-        </script>
+    <script src="public/js/site.js"></script>
 </body>
 
 </html>
